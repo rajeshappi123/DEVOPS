@@ -1,6 +1,15 @@
 # Maven
+- task: JFrogMaven@1
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'install'
+    javaHomeOption: 'JDKVersion'
 - task: Maven@4
   inputs:
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
     mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
